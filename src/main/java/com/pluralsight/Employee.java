@@ -6,6 +6,9 @@ public class Employee {
     private double hoursWorked;
     private double payRate;
 
+    public Employee() {
+    }
+
     public Employee(int employeeId, String name, double hoursWorked, double payRate) {
         this.employeeId = employeeId;
         this.name = name;
@@ -15,6 +18,10 @@ public class Employee {
 
     public int getEmployeeId() {
         return employeeId;
+    }
+
+    public void setEmployeeId(int employeeId) {
+        this.employeeId = employeeId;
     }
 
     public String getName() {
@@ -29,7 +36,7 @@ public class Employee {
         return hoursWorked;
     }
 
-    public void setHoursWorked(float hoursWorked) {
+    public void setHoursWorked(double hoursWorked) {
         this.hoursWorked = hoursWorked;
     }
 
@@ -37,12 +44,23 @@ public class Employee {
         return payRate;
     }
 
-    public void setPayRate(float payRate) {
+    public void setPayRate(double payRate) {
         this.payRate = payRate;
     }
 
     public double getGrossPay(){
         double grossPay = payRate * hoursWorked;
         return grossPay;
+    }
+
+    @Override
+    public String toString() {
+        return """
+           [Employee Record]
+           ID:        %d
+           Name:      %s
+           Hours:     %.1f
+           Rate/hr:   $%.2f
+           """.formatted(employeeId, name, hoursWorked, payRate);
     }
 }
